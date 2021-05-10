@@ -1,6 +1,8 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, flash
+from Klasser.product import Product
 
 app = Flask(__name__)
+produkter = []
 
 @app.route("/")
 def index():
@@ -9,11 +11,19 @@ def index():
 # Sida för att visa vilka produkter man har, länkt till lägga till ny produkt, länk till uppdatera befintilig produkt
 @app.route("/manage_product", methods=["GET", "POST"])
 def manage_product():
-    return render_template("manage_product.html", title="Hantera produkt")
+    for produkt in produkter:
+        print(produkt.get_name())
+        print(produkt.get_price())
+    return render_template("manage_product.html")
 
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
+    if request.method == "POST":
+        namn = request.form.get("productName")
+        pris = request.form.get("productPrice")
+        ny_produkt = Product(namn,pris,"Producent")
+        produkter.append(ny_produkt)
     return render_template("add_product.html")
 
 #denna sida skall ta info från vald produkt och visa för justering
