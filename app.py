@@ -3,7 +3,7 @@ from Klasser.product import Product
 
 app = Flask(__name__)
 produkter = []
-p = Product("Korv",25,"Gustaf's Kött","En go Körv!")
+p = Product("Korv",25,"Gustaf's Kött","Denna korven lagade min morsa till min farsa redan när jag var lite grabb. En go körv")
 produkter.append(p)
 p = Product("Jordgubbar",40,"Mårten's lilla gård")
 produkter.append(p)
