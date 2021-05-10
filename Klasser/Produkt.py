@@ -1,23 +1,23 @@
 class Produkt:
-    def __init__(self, namn, pris, ägare):
-        self.__namn = namn
-        self.__pris = pris
-        self.__ägare = ägare
+    def __init__(self, name, price, producer):
+        self.__name = name
+        self.__price = price
+        self.__producer = producer
     
-    def get_namn(self):
-        return self.__namn
+    def get_name(self):
+        return self.__name
 
-    def get_pris(self):
-        return self.__pris
+    def get_price(self):
+        return self.__price
 
-    def get_ägare(self):
-        return self.__ägare
+    def get_producer(self):
+        return self.__producer
 
-    def set_namn(self, namn):
-        self.__namn = namn
+    def set_name(self, name):
+        self.__name = name
 
-    def set_pris(self, pris):
-        self.__pris = pris
+    def set_price(self, price):
+        self.__price = price
 
 
 
