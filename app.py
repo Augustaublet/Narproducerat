@@ -3,6 +3,10 @@ from Klasser.product import Product
 
 app = Flask(__name__)
 produkter = []
+p = Product("Korv",25,"Gustaf's Kött")
+produkter.append(p)
+p = Product("Jordgubbar",40,"Mårten's lilla gård")
+produkter.append(p)
 
 @app.route("/")
 def index():
@@ -11,10 +15,7 @@ def index():
 # Sida för att visa vilka produkter man har, länkt till lägga till ny produkt, länk till uppdatera befintilig produkt
 @app.route("/manage_product", methods=["GET", "POST"])
 def manage_product():
-    for produkt in produkter:
-        print(produkt.get_name())
-        print(produkt.get_price())
-    return render_template("manage_product.html")
+    return render_template("manage_product.html", products=produkter)
 
 
 @app.route("/add_product", methods=["GET", "POST"])

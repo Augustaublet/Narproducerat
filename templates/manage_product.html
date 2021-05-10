@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% block title %}
-Add Product
+Hantera produkt
 {% endblock %}
 
 {% block content %}
@@ -8,16 +8,16 @@ Add Product
 <div>Denna sidan skall visa produkter, länk till att lägga till och uppdatera produkter </div>
 
 
-
+{% for product in products%}
 <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">Färskpotatis</h5>
-      <h6 class="card-subtitle mb-2 text-muted">Gustafs potatis</h6>
-      <p class="card-text">Handplockade färskpotatis från frihamnen.</p>
+      <h5 class="card-title">{{product.get_name()}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{product.get_producer()}}</h6>
+      <p class="card-text">Här skall det vara en beskrivande text om produkten</p>
       
       <a class="btn btn-primary"  href="/add_product" class="card-link">Uppdatera</a>
     </div>
   </div>
-
+{%endfor%}
 
 {% endblock %}
