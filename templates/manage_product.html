@@ -13,7 +13,7 @@ Hantera produkt
     <div class="card-body">
       <h5 class="card-title">{{product.get_name()}}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{product.get_producer()}}</h6>
-      <p class="card-text">Här skall det vara en beskrivande text om produkten</p>
+      <p class="card-text">{{product.get_description()}}</p>
       
       <a class="btn btn-primary"  href="/add_product" class="card-link">Uppdatera</a>
     </div>

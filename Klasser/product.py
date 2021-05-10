@@ -1,8 +1,9 @@
 class Product:
-    def __init__(self, name, price, producer):
+    def __init__(self, name, price, producer, description="ingen beskrivng finns"):
         self.__name = name
         self.__price = price
         self.__producer = producer
+        self.__description = description
 
     
     def get_name(self):
@@ -19,5 +20,10 @@ class Product:
 
     def set_price(self, price):
         self.__price = price
-
+    
+    def set_description(self, description):
+        self.__description = description
+    
+    def get_description(self):
+        return self.__description
 
