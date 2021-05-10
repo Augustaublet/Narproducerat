@@ -23,11 +23,8 @@ def login():
 # Sida för att visa vilka produkter man har, länkt till lägga till ny produkt, länk till uppdatera befintilig produkt
 @app.route("/manage_product", methods=["GET", "POST"])
 def manage_product():
-<<<<<<< HEAD
     return render_template("manage_product.html", products=produkter)
-=======
-    return render_template("manage_product.html", produkter=produkter)
->>>>>>> f3ac4fe (Lagt med login samt skapa konto)
+
 
 
 @app.route("/add_product", methods=["GET", "POST"])
