@@ -1,8 +1,9 @@
-class Produkt:
+class Product:
     def __init__(self, name, price, producer):
         self.__name = name
         self.__price = price
         self.__producer = producer
+
     
     def get_name(self):
         return self.__name
@@ -18,6 +19,5 @@ class Produkt:
 
     def set_price(self, price):
         self.__price = price
-
 
 
