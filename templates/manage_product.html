@@ -6,6 +6,7 @@ Hantera produkt
 {% block content %}
 <h1>Hantera produkter</h1>
 <div>Denna sidan skall visa produkter, länk till att lägga till och uppdatera produkter </div>
+<<<<<<< HEAD
 
 
 {% for product in products%}
@@ -19,5 +20,10 @@ Hantera produkt
     </div>
   </div>
 {%endfor%}
+=======
+{% for produkt in produkter %}
+{{ produkt.get_name() }}
+{% endfor %}  
+>>>>>>> f3ac4fe (Lagt med login samt skapa konto)
 
 {% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %} 
+{% block title %}
+Skapa konto
+{% endblock %}
+
+{% block content %}
+<h1>Skapa konto</h1>
+<form method="Post">
+    <div class="form-group">
+        <label for="email">Mailadress</label>
+        <input 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            name="email" 
+            placeholder="Fyll i din mailadress"
+        />
+    </div>
+    <div class="form-group">
+        <label for="firstName">Namn</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="firstName" 
+            name="firstName" 
+            placeholder="Fyll i ditt namn"
+        />
+    </div>
+    <div class="form-group">
+        <label for="password1">Lösenord</label>
+        <input 
+            type="password" 
+            class="form-control" 
+            id="password1" 
+            name="password1" 
+            placeholder="Fyll i ett lösenord"
+        />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Skapa</button>
+</form>
+
+{% endblock %}
