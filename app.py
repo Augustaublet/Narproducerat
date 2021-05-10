@@ -14,7 +14,7 @@ def manage_product():
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
-    return render_template("add_product.html", title="Lägg till produkt")
+    return render_template("add_product.html")
 
 #denna sida skall ta info från vald produkt och visa för justering
 @app.route("/update-product", methods=["GET", "POST"])
