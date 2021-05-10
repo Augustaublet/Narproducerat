@@ -4,7 +4,7 @@ class Product:
         self.__price = price
         self.__producer = producer
         self.__description = description
-
+        self.__quantity = None
     
     def get_name(self):
         return self.__name
@@ -20,6 +20,15 @@ class Product:
 
     def set_price(self, price):
         self.__price = price
+
+    def get_quantity(self):
+        return self.__quantity
+
+    def set_quantity(self, quantity):
+        self.__quantity = quantity
+
+    def __str__(self):
+        return f"{self.__name}, {self.__price}, {self.__producer.get_name()}"
     
     def set_description(self, description):
         self.__description = description

@@ -1,10 +1,9 @@
-class Consumer:
-
-    def __init__(self, name, email, consumer_ID, shopping_cart):
+from shopping_cart import *
+class Consumer(ShoppingCart):
+    def __init__(self, name, email):
+        super().__init__()
         self.__name = name
         self.__email = email
-        self.__consumer_ID = consumer_ID
-        self.__shopping_cart = shopping_cart
 
     def get_name(self):
         return self.__name
@@ -17,9 +16,6 @@ class Consumer:
     
     def set_email(self, email):
         self.__email = email
-    
-    def get_consumerID(self):
-        return self.__consumer_ID
 
     def get_shopping_cart(self):
         return self.__shopping_cart
