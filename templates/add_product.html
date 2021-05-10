@@ -1,8 +1,34 @@
 {% extends "base.html" %} 
+{% block title %}Lägg till ny produkt{% endblock %}
 
 {% block content %}
 <h1>Lägg till ny produkt</h1>
 <div>Denna sidan användas för att lägga till nya produkter</div>
-    
+<br />
+
+<form method="Post">
+    <div class="form-group">
+        <label for="productName">Produktnamn</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="productName" 
+            name="productName" 
+            placeholder="Namn på produkt"
+        />
+    </div>
+    <div class="form-group">
+        <label for="productPrice">Produktpris</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="productPrice" 
+            name="productPrice" 
+            placeholder="Pris på produkt"
+        />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Lägg till</button>
+</form>
 
 {% endblock %}
