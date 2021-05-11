@@ -1,4 +1,4 @@
-from shopping_cart import *
+from Klasser.shopping_cart import *
 class Consumer(ShoppingCart):
     def __init__(self, name, email):
         super().__init__()

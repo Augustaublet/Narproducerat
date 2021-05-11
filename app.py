@@ -1,12 +1,9 @@
 from flask import Flask, render_template, url_for, request, flash
 from Klasser.product import Product
+from testobjekt import produkter
+from testobjekt import producenter
 
 app = Flask(__name__)
-produkter = []
-p = Product("Korv",25,"Gustaf's Kött","Denna korven lagade min morsa till min farsa redan när jag var lite grabb. En go körv")
-produkter.append(p)
-p = Product("Jordgubbar",40,"Mårten's lilla gård")
-produkter.append(p)
 
 @app.route("/")
 def index():
@@ -54,7 +51,13 @@ def update_product():
 
 @app.route("/handla", methods=["GET", "POST"])
 def consumer_shopping():
-    return render_template("consumer_shopping.html", products=produkter)
+    if request.method == "POST":
+        pass
+    return render_template("consumer_shopping.html", products=produkter, producer=producenter)
+
+@app.route("/varukorg", methods=["GET", "POST"])
+def shoppingCart():
+    return render_template("shoppingCart.html", products=produkter)
 
 if __name__ == "__main__":
     app.run(debug=True)
