@@ -34,8 +34,17 @@ def add_product():
     if request.method == "POST":
         namn = request.form.get("productName")
         pris = request.form.get("productPrice")
-        ny_produkt = Product(namn,pris,"Producent")
+        description = request.form.get("productDescription")
+        
+        # får inte detta att fungera /August
+        isForSale = request.form.get("isForSale")
+        print(isForSale)
+        #
+            
+        ny_produkt = Product(namn, pris,"Producent", description, isForSale)
         produkter.append(ny_produkt)
+        return render_template("manage_product.html", products=produkter)
+
     return render_template("add_product.html")
 
 #denna sida skall ta info från vald produkt och visa för justering
