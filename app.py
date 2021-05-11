@@ -43,5 +43,9 @@ def add_product():
 def update_product():
     return render_template("update_product.html")
 
+@app.route("/handla", methods=["GET", "POST"])
+def consumer_shopping():
+    return render_template("consumer_shopping.html", products=produkter)
+
 if __name__ == "__main__":
     app.run(debug=True)
