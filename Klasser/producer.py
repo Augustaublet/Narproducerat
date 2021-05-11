@@ -6,7 +6,7 @@ class Producer:
         self.__email = email
         self.__description = description
         self.__presentation = presentation
-        inventory = []
+        self.__inventory = []
 
     def get_name(self):
         return self.__name
@@ -33,13 +33,19 @@ class Producer:
         self.__presentation = presentation
 
     def add_to_inventory(self, product):
-        inventory.append(product)
+        '''
+        Takes a product and adds it to the producers inventory list.
+        '''
+        self.__inventory.append(product)
 
     def get_inventory(self):
-        return inventory
+        return self.__inventory
 
     def remove_from_inventory(self, product):
-        inventory.remove(product)
+        '''
+        Takes a product and removes it from the producers inventory list.
+        '''
+        self.__inventory.remove(product)
     
 
 
