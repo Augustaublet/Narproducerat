@@ -25,9 +25,9 @@ def login():
 def manage_product():
     return render_template("manage_product.html", products=produkter)
 
-@app.route("/set_region", methods=["GET"])
-def set_region():
-    return render_template("set_region.html")
+@app.route("/set_ring", methods=["GET"])
+def set_ring():
+    return render_template("set_ring.html")
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
