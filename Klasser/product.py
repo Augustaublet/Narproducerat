@@ -1,11 +1,12 @@
 class Product:
-    def __init__(self, name, price, producer, description="ingen beskrivng finns"):
+    def __init__(self, name, price, producer, description="ingen beskrivng finns", for_sale=True):
         self.__name = name
         self.__price = price
         self.__producer = producer
         self.__description = description
         self.__quantity = None
-    
+        self.__for_sale = for_sale
+
     def get_name(self):
         return self.__name
 
@@ -36,3 +37,9 @@ class Product:
     def get_description(self):
         return self.__description
 
+    #tar Boolean för om produkten är tillgänglig
+    def set_for_sale(self, state):
+        self.__for_sale = state
+
+    def get_for_sale(self):
+        return self.__for_sale

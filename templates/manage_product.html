@@ -15,6 +15,10 @@ Hantera produkt
       <p class="card-text">{{product.get_description()}}</p>
       <p class="card-text">Pris:{{product.get_price()}}kr</p>
       
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="for_sale" >
+        <label class="form-check-label" for="flexSwitchCheckDefault">Produkt finns tillgänglig</label>
+      </div>
       <a class="btn btn-primary"  href="/add_product" class="card-link">Uppdatera</a>
     </div>
   </div>
