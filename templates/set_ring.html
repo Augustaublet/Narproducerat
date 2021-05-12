@@ -4,13 +4,15 @@
 {% block content %}
 <h1>Välj Ring</h1>
 
-
-    <input class="form-control" list="datalistOptions" id="set_ring" placeholder="Välj Ring">
-    <datalist id="datalistOptions">
-      {% for ring in ringar %}
-      <option value="{{ring.get_name}}">
+<form method="Post">
+  <input class="form-control" list="datalistOptions" id="set_ring" placeholder="Välj Ring">
+  <datalist id="datalistOptions">
+  {% for ring in ringar %}
+    <option value={{ring.get_name()}}>
       {% endfor %}
   </datalist>
-
+  
+  <button type="submit" class="btn btn-primary">Välj</button>
+</form>
 
 {% endblock %}

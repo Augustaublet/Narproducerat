@@ -45,6 +45,15 @@
         </label>
       </div>
 
+    <input class="form-control" list="datalistOptions" id="productProducer" placeholder="producent"> 
+    <datalist id="datalistOptions">
+        {% for producer in producers %}
+        <option value={{producer.get_name()}}>
+        {% endfor %}
+    </datalist>
+        
+
+
     <br />
     <button type="submit" class="btn btn-primary">Lägg till</button>
 </form>

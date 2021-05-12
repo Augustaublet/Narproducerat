@@ -23,8 +23,11 @@ def login():
 def manage_product():
     return render_template("manage_product.html", products=produkter)
 
-@app.route("/set_ring", methods=["GET"])
+@app.route("/set_ring", methods=["GET","POST"])
 def set_ring():
+    if request.method == "POST":
+        return render_template("consumer_shopping.html",products=produkter, producers=producenter)
+
     return render_template("set_ring.html", ringar = rekoringar)
 
 @app.route("/add_product", methods=["GET", "POST"])
@@ -33,17 +36,12 @@ def add_product():
         namn = request.form.get("productName")
         pris = request.form.get("productPrice")
         description = request.form.get("productDescription")
-        
-        # får inte detta att fungera /August
         isForSale = request.form.get("isForSale")
-        print(isForSale)
-        #
-            
         ny_produkt = Product(namn, pris,"Producent", description, isForSale)
         produkter.append(ny_produkt)
         return render_template("manage_product.html", products=produkter)
 
-    return render_template("add_product.html")
+    return render_template("add_product.html", producers = producenter)
 
 #denna sida skall ta info från vald produkt och visa för justering
 @app.route("/update-product", methods=["GET", "POST"])
