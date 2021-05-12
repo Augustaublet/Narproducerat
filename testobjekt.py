@@ -1,6 +1,8 @@
-from Klasser.product import Product
-from Klasser.consumer import Consumer
-from Klasser.producer import Producer
+from Klasser.product import Product # type: ignore
+from Klasser.consumer import Consumer # type: ignore
+from Klasser.producer import Producer # type: ignore
+from Klasser.rekoring import RekoRing # type: ignore
+from Klasser.event import Event # type: ignore
 
 # skapa en .py fil för att initiera lite grund data
 
@@ -23,6 +25,8 @@ användare = []
 #         self.__description = description
 #         self.__quantity = None
 produkter = []
+
+event = []
 
 a = Producer("Håkans potatisar", "hakan@potatis.se", "Håkan odlar potatisar","")
 producenter.append(a)
@@ -58,3 +62,18 @@ produkter.append(c)
 c = Product("Pepparkakor", 12, "Nettans kakor", "250gr")
 c.set_quantity(13)
 produkter.append(c)
+
+
+d = RekoRing("Chalmers", "Västra Götaland", "Chalmers parkering", "19.00")
+rekoringar.append(d)
+d = RekoRing("Backaplan", "Västra Götaland", "Backaplans parkering", "18.30")
+rekoringar.append(d)
+d = RekoRing("Floda", "Västra Götaland", "Floda centrum", "20.00")
+rekoringar.append(d)
+
+e = Event("13/5", rekoringar[0])
+event.append(e)
+e = Event("13/5", rekoringar[1])
+event.append(e)
+e = Event("20/5", rekoringar[2])
+event.append(e)

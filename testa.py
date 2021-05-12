@@ -1,15 +1,14 @@
-from Klasser.producer import *
-from Klasser.consumer import *
-from Klasser.product import *
-from Klasser.rekoring import *
-from Klasser.event import *
-
+from Klasser.producer import * 
+from Klasser.consumer import * 
+from Klasser.product import * 
+from Klasser.rekoring import * 
+from Klasser.event import * 
 
 #skapa producent
-August = Producer("August", "august@mail.com", "hej", "hejsan")
+August = Producer("August", "august@mail.com", "hej", "hejsan") 
 
 #skapa konsument
-Mårten = Consumer("Mårten", "mårten@mail.com")
+Mårten = Consumer("Mårten", "mårten@mail.com") 
 
 #skapa produkter
 gurka = Product("Gurka", "20", August)
