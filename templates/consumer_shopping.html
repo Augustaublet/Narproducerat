@@ -5,7 +5,17 @@ Handla
 {% endblock %}
 
 {% block content %}
-<h1>Handla produkter</h1>
+<h1>Handla från Rekoringen {{current_ring}} </h1>
+
+<form method="Post">
+    <input class="form-control" list="datalistOptions" id="set_ring" name="set_ring" placeholder={{current_ring}}>
+    <datalist id="datalistOptions">
+    {% for ring in ringar %}
+      <option value={{ring.get_name()}}>
+        {% endfor %}
+    </datalist><button type="submit" class="btn btn-primary">Välj</button>
+    
+ </form>
 
 {% for producer in producers%}
 <br/>

@@ -26,7 +26,8 @@ def manage_product():
 @app.route("/set_ring", methods=["GET","POST"])
 def set_ring():
     if request.method == "POST":
-        return render_template("consumer_shopping.html",products=produkter, producers=producenter)
+        current_ring = request.form.get("set_ring")
+        return render_template("consumer_shopping.html",products=produkter, producers=producenter, current_ring=current_ring)
 
     return render_template("set_ring.html", ringar = rekoringar)
 
@@ -50,7 +51,12 @@ def update_product():
 
 @app.route("/handla", methods=["GET", "POST"])
 def consumer_shopping():
-    return render_template("consumer_shopping.html", products=produkter, producers=producenter)
+    if request.method == "POST":
+        current_ring = request.form.get("set_ring")
+        return render_template("consumer_shopping.html",products=produkter, producers=producenter, current_ring=current_ring)
+
+    current_ring= "Välj en ring"
+    return render_template("consumer_shopping.html", products=produkter, producers=producenter, ringar=rekoringar, current_ring=current_ring)
 
 @app.route("/buy-product", methods=["POST"])
 def buy_product():

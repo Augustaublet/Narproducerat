@@ -5,7 +5,7 @@
 <h1>Välj Ring</h1>
 
 <form method="Post">
-  <input class="form-control" list="datalistOptions" id="set_ring" placeholder="Välj Ring">
+  <input class="form-control" list="datalistOptions" id="set_ring" name="set_ring" placeholder="Välj Ring">
   <datalist id="datalistOptions">
   {% for ring in ringar %}
     <option value={{ring.get_name()}}>
