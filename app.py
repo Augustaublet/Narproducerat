@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, request, flash
 from Klasser.product import Product
 from testobjekt import produkter, rekoringar
 from testobjekt import producenter
+import json
 
 app = Flask(__name__)
 
@@ -51,9 +52,14 @@ def update_product():
 
 @app.route("/handla", methods=["GET", "POST"])
 def consumer_shopping():
-    if request.method == "POST":
-        pass
-    return render_template("consumer_shopping.html", products=produkter, producer=producenter)
+    return render_template("consumer_shopping.html", products=produkter, producers=producenter)
+
+@app.route("/buy-product", methods=["POST"])
+def buy_product():
+    productjson = json.loads(request.data)
+    product_info = productjson["test"]
+    print(product_info)
+    print("hej")
 
 @app.route("/varukorg", methods=["GET", "POST"])
 def shoppingCart():
