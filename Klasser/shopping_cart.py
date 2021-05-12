@@ -52,7 +52,9 @@ class ShoppingCart:
     def remove_from_cart(self, product):
         '''
         Removes the product from the cart completely.
+        Restores the products amount in the cart to the producers inventory.
         '''
+        product.set_quantity(product.get_quantity + self.__cart_list[product])
         self.__cart_list.remove(product)
 
     def get_consumer(self):
