@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request, flash
 from Klasser.product import Product
-from testobjekt import produkter
+from testobjekt import produkter, rekoringar
 from testobjekt import producenter
 
 app = Flask(__name__)
@@ -24,7 +24,7 @@ def manage_product():
 
 @app.route("/set_ring", methods=["GET"])
 def set_ring():
-    return render_template("set_ring.html")
+    return render_template("set_ring.html", ringar = rekoringar)
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
