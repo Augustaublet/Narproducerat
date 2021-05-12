@@ -1,46 +1,66 @@
-from Klasser.producer import * 
-from Klasser.consumer import * 
-from Klasser.product import * 
-from Klasser.rekoring import * 
-from Klasser.event import * 
+from Klasser.producer import Producer # type: ignore
+from Klasser.consumer import Consumer # type: ignore
+from Klasser.product import Product # type: ignore
+from Klasser.rekoring import RekoRing # type: ignore
+from Klasser.event import Event # type: ignore
 
 #skapa producent
 August = Producer("August", "august@mail.com", "hej", "hejsan") 
+Linnea = Producer("Linnea", "linnea@mail.com", "hej", "hejsan")
 
 #skapa konsument
 Mårten = Consumer("Mårten", "mårten@mail.com") 
 
 #skapa produkter
 gurka = Product("Gurka", "20", August)
+gurka.set_quantity(20)
 potatis = Product("Potatis", "15", August)
+potatis.set_quantity(15)
 
+lammfile = Product("Lammfile", 150, Linnea)
+lammfile.set_quantity(5)
+
+print("")
+print("")
 print(gurka)
 print(potatis)
-
+print(lammfile)
 
 #köp tre gurkor
-Mårten.buy_product(gurka, "3")
-print(Mårten.get_cart_list())
+Mårten.add_x_products(gurka, "3")
+print(Mårten.print_cart_products())
 
 
 #köp 3 till gurkor, och 7 potatisar
-Mårten.buy_product(gurka, "6")
-Mårten.buy_product(potatis, "7")
+Mårten.add_x_products(gurka, "6")
+Mårten.add_x_products(potatis, "7")
+Mårten.add_x_products(lammfile, "3")
+print("")
+print("")
+
 
 print(Mårten.print_cart_products())
-
+print(Mårten.get_producers())
+print("")
+print("")
+print(gurka)
+print(potatis)
+print(lammfile)
 #skapa rekoring
 chalmers = RekoRing("Chalmers", "Västra Götaland", "Chalmers parkering", "19.00")
 #lägg till august i ringen
 chalmers.add_producer(August)
+chalmers.add_producer(Linnea)
 print(chalmers.get_joined_producers())
 
 chalmers_torsdag = Event("13/5", chalmers)
 
 chalmers_torsdag.add_attending_producer(August)
+chalmers_torsdag.add_attending_producer(Linnea)
 
 l = chalmers_torsdag.get_attending_producers()
-print(l[0].get_name())
+for producer in l:
+    print(producer.get_name())
 
 
 

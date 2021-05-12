@@ -1,7 +1,7 @@
 class Product:
-    def __init__(self, name, price, producer, description="ingen beskrivng finns", for_sale=True):
+    def __init__(self, name, price, producer, description="Ingen beskrivning finns", for_sale=True):
         self.__name = name
-        self.__price = price
+        self.__price = int(price)
         self.__producer = producer
         self.__description = description
         self.__quantity = None
@@ -26,10 +26,10 @@ class Product:
         return self.__quantity
 
     def set_quantity(self, quantity):
-        self.__quantity = quantity
+        self.__quantity = int(quantity)
 
     def __str__(self):
-        return f"{self.__name}, {self.__price}, {self.__producer.get_name()}"
+        return f"Namn: {self.__name}, Pris: {self.__price}, Kvantitet kvar: {self.__quantity}, Producent: {self.__producer.get_name()}"
     
     def set_description(self, description):
         self.__description = description

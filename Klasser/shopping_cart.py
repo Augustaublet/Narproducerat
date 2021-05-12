@@ -8,20 +8,40 @@ class ShoppingCart:
 
     def print_cart_products(self):
         '''
-        Returns a dictionary of the products(key) and their prices(value) currently in the cart.
+        Returns a dictionary of the products(key) and their total price(value) currently in the cart.
         '''
         cart = {}
         for product in self.__cart_list:
-            cart[product.get_name()] = self.__cart_list[product]
+            cart[product.get_name()] = product.get_price()*self.__cart_list[product]
         return cart
 
-    def buy_product(self, product, amount):
+    def add_x_products(self, product, amount):
         '''
         Takes a product(key) and how many you want to buy(value), and adds them to the cart dictionary.
         If the product is already in the cart, it updates the amount to the input added.
+        If there is no stock or the stock would be lower than 0, the purchase won't work.
         '''
-        self.__cart_list[product] = amount
-     
+        if product.get_quantity == None:
+            return
+        if product.get_quantity() - int(amount) > 0:
+            product.set_quantity(product.get_quantity() - int(amount))
+            self.__cart_list[product] = int(amount)
+        else:
+            return
+
+    def add_one_product(self, product):
+        '''
+        Takes a product and adds one piece to the cart.
+        '''
+        if product.get_quantity == None:
+            return
+        if product.get_quantity() - int(1) > 0:
+            product.set_quantity(product.get_quantity() - int(1))
+            self.__cart_list[product] += int(1)
+        else:
+            return
+        
+
     def remove_from_cart(self, product):
         '''
         Removes the product from the cart completely.
@@ -30,3 +50,21 @@ class ShoppingCart:
 
     def get_consumer(self):
         return self.__consumer
+
+    def get_producers(self):
+        '''
+        Returns a list of the producers who own the wares in the cart.
+        '''
+        producers = []
+        for product in self.__cart_list:
+            if product.get_producer() not in producers:
+                producers.append(product.get_producer())
+        return producers
+
+    # def sum_per_producer(self):
+    #     '''
+    #     Returns a dictionary with the producers(key) and the sum of the cost of their products in the cart(value).
+    #     '''
+    #     dict = {}
+    #     for producer in self.get_producers():
+            

@@ -1,4 +1,4 @@
-from Klasser.shopping_cart import *
+from Klasser.shopping_cart import ShoppingCart # type: ignore
 class Consumer(ShoppingCart):
     def __init__(self, name, email):
         super().__init__()
@@ -16,7 +16,4 @@ class Consumer(ShoppingCart):
     
     def set_email(self, email):
         self.__email = email
-
-    def get_shopping_cart(self):
-        return self.__shopping_cart
 
