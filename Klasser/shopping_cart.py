@@ -19,7 +19,7 @@ class ShoppingCart:
         '''
         Takes a product(key) and how many you want to buy(value), and adds them to the cart dictionary.
         If the product is already in the cart, it updates the amount to the input added.
-        If there is no stock or the stock would be lower than 0, the purchase won't work.
+        If there is no stock or the stock would be lower than 0, it returns nothing.
         '''
         if product.get_quantity == None:
             return
@@ -32,6 +32,7 @@ class ShoppingCart:
     def add_one_product(self, product):
         '''
         Takes a product and adds one piece to the cart.
+        If the amount left is 0, or is None, it returns nothing.
         '''
         if product.get_quantity == None:
             return
@@ -40,7 +41,13 @@ class ShoppingCart:
             self.__cart_list[product] += int(1)
         else:
             return
-        
+
+    def subract_one_product(self, product):
+        '''
+        Takes a product and subtracts one piece from the cart.
+        '''
+        self.__cart_list[product] -= int(1)
+        product.set_quantity(product.get_quantity() + int(1))
 
     def remove_from_cart(self, product):
         '''
