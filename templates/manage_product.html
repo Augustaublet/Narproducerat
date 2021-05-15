@@ -5,7 +5,8 @@ Hantera produkt
 
 {% block content %}
 <h1>Hantera produkter</h1>
-
+<div><a role="button" class="btn btn-success me-md-1" href="/add_product">Ny produkt</a></div>
+</br>
 
 {% for product in products%}
 <div class="card" style="width: 35rem;">
@@ -19,7 +20,7 @@ Hantera produkt
         <input class="form-check-input" type="checkbox" id="for_sale" >
         <label class="form-check-label" for="flexSwitchCheckDefault">Produkt finns tillgänglig</label>
       </div>
-      <a class="btn btn-outline-success me-md-1"  href="/add_product" class="card-link">Uppdatera</a>
+      <a class="btn btn-outline-success me-md-1"  href="#" class="card-link" disabled>Uppdatera</a>
     </div>
   </div>
 {%endfor%}

@@ -2,9 +2,38 @@
 {% block title %}Hem{% endblock %}
 
 {% block content %}
-<h1>Reko-hem</h1>
-<div>Detta är huvudsidan</div>
+<h1>Reko</h1>
+<div>För att kunna testa vår tjänst behöver man välj typ av användare</div>
+<div>
+<form method="Post">
     
-
+    {%for c in consumers%}
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="user_select" id={{c.get_name()}} value={{c.get_name()}}>
+        <label class="form-check-label" for={{c.get_name()}}>
+          Konsument: {{c.get_name()}}
+        </label>
+    </div>
+    {%endfor%}
+    </br>
+    {%for p in producers%}
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="user_select" id={{p.get_name()}} value={{p.get_name()}}>
+        <label class="form-check-label" for={{p.get_name()}}>
+            Producent: {{p.get_name()}}
+        </label>
+    </div>
+    {%endfor%}
+    </br>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="user_select" id="admin" value="admin" disabled>
+        <label class="form-check-label" for="admin">
+          Admin
+        </label>
+    </div>
+    </br>
+      <button type="submit" class="btn btn-outline-success me-md-1">Börja testa</button>
+</form>
+</div>
 
 {% endblock %}
