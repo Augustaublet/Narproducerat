@@ -22,25 +22,31 @@ class ShoppingCart:
         If there is no stock or the stock would be lower than 0, it returns nothing.
         '''
         if product.get_quantity == None:
+            print("Den här produkten har inget saldo.")
             return
         if product.get_quantity() - int(amount) > 0:
             product.set_quantity(product.get_quantity() - int(amount))
             self.__cart_list[product] = int(amount)
         else:
-            return
+            print("Produkten är slutsåld.")
 
     def add_one_product(self, product):
         '''
         Takes a product and adds one piece to the cart.
-        If the amount left is 0, or is None, it returns nothing.
+        If the amount left in the producers inventory is 0, or is None, it prints a message.
         '''
-        if product.get_quantity == None:
+        if product.get_quantity() == None:
+            print("Den här produkten har inget saldo.")
             return
         if product.get_quantity() - int(1) > 0:
-            product.set_quantity(product.get_quantity() - int(1))
-            self.__cart_list[product] += int(1)
+            if product not in self.__cart_list:
+                product.set_quantity(product.get_quantity() - int(1))
+                self.__cart_list[product] = int(1)
+            else:    
+                product.set_quantity(product.get_quantity() - int(1))
+                self.__cart_list[product] += int(1)
         else:
-            return
+            print("Produkten är slutsåld.")
 
     def subract_one_product(self, product):
         '''
@@ -79,3 +85,4 @@ class ShoppingCart:
             
     def get_id(self):
         return id(self)
+

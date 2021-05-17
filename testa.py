@@ -18,7 +18,7 @@ potatis = Product("Potatis", "15", August)
 potatis.set_quantity(15)
 
 lammfile = Product("Lammfile", 150, Linnea)
-lammfile.set_quantity(5)
+lammfile.set_quantity(0)
 
 print("")
 print("")
@@ -27,17 +27,24 @@ print(potatis)
 print(lammfile)
 
 #köp tre gurkor
-Mårten.add_x_products(gurka, "3")
+#Mårten.add_x_products(gurka, "3")
 print(Mårten.print_cart_products())
 
+Mårten.add_one_product(lammfile)
 
 #köp 3 till gurkor, och 7 potatisar
-Mårten.add_x_products(gurka, "6")
-Mårten.add_x_products(potatis, "7")
-Mårten.add_x_products(lammfile, "3")
+#Mårten.add_x_products(gurka, "6")
+#Mårten.add_x_products(potatis, "7")
+#Mårten.add_x_products(lammfile, "3")
 print("")
 print("")
 
+Mårten.add_one_product(lammfile)
+Mårten.add_one_product(gurka)
+Mårten.add_one_product(gurka)
+Mårten.add_one_product(gurka)
+Mårten.add_one_product(gurka)
+Mårten.add_one_product(gurka)
 
 print(Mårten.print_cart_products())
 print(Mårten.get_producers())
@@ -47,20 +54,20 @@ print(gurka)
 print(potatis)
 print(lammfile)
 #skapa rekoring
-chalmers = RekoRing("Chalmers", "Västra Götaland", "Chalmers parkering", "19.00")
-#lägg till august i ringen
-chalmers.add_producer(August)
-chalmers.add_producer(Linnea)
-print(chalmers.get_joined_producers())
+# chalmers = RekoRing("Chalmers", "Västra Götaland", "Chalmers parkering", "19.00")
+# #lägg till august i ringen
+# chalmers.add_producer(August)
+# chalmers.add_producer(Linnea)
+# print(chalmers.get_joined_producers())
 
-chalmers_torsdag = Event("13/5", chalmers)
+# chalmers_torsdag = Event("13/5", chalmers)
 
-chalmers_torsdag.add_attending_producer(August)
-chalmers_torsdag.add_attending_producer(Linnea)
+# chalmers_torsdag.add_attending_producer(August)
+# chalmers_torsdag.add_attending_producer(Linnea)
 
-l = chalmers_torsdag.get_attending_producers()
-for producer in l:
-    print(producer.get_name())
+# l = chalmers_torsdag.get_attending_producers()
+# for producer in l:
+#     print(producer.get_name())
 
 
 
