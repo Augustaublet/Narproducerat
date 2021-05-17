@@ -16,28 +16,17 @@ Varukorg
     
  </form>
  <form method="Post">
-{% for producer in producers%}
-<br/>
-    <div class="d-grid gap-2">
-        <label class="btn btn-outline-success">
-            {{producer.get_name()}}
-        </a>
-    </div>
-    <br/>
-        {% for product in products%}
-            {% if producer.get_name() == product.get_producer() %}
-                <div class="card" style="width: 35rem;">
-                    <div class="card-body">
-                    <h5 class="card-title">{{product.get_name()}}</h5>
-                    <h6 class="card-text">{{product.get_description()}}</h6>
-                    <p class="card-text">Saldo: {{product.get_quantity()}}</p>
-                    <p class="card-text">Pris: {{product.get_price()}}kr</p>
-                    <button class="btn btn-outline-success me-md-1" type="submit", value="{{product.get_id()}}" name="add_cart">Handla</button>
-                    </div>
-                </div>
-            {% endif %}
-        {%endfor%}
+{% for producer in user.get_producers()%}
+{{producer}}
 {%endfor%}
+
+{% set dict = user.get_cart_list() %}
+{% for products in dict %}
+{{products.get_name()}}
+{{dict[products]}}
+{%endfor%}
+
+
 </form>
 
 {% endblock %}

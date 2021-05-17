@@ -73,9 +73,7 @@ def consumer_shopping():
         add_cart = request.form.get("add_cart")
         product = get_object(add_cart)
         user = get_object(session["current_user"])
-        print(product.get_quantity())
-        print(user.get_name())
-        # user.add_one_product(product)
+        user.add_one_product(product)
     if request.form.get("set_ring"):
         session["current_ring"] = request.form.get("set_ring")
         return redirect(url_for("consumer_shopping"))
@@ -83,7 +81,8 @@ def consumer_shopping():
 
 @app.route("/varukorg", methods=["GET", "POST"])
 def shoppingCart():
-    return render_template("shoppingCart.html", products=produkter)
+    user = get_object(session["current_user"])
+    return render_template("shoppingCart.html", user=user)
 
 @app.route("/my_order")
 def my_order():
