@@ -77,3 +77,5 @@ class ShoppingCart:
     #     dict = {}
     #     for producer in self.get_producers():
             
+    def get_id(self):
+        return id(self)

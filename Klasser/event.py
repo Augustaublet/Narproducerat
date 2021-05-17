@@ -37,4 +37,5 @@ class Event:
         '''
         self.__attending_producers[producer] = False
 
-    
+    def get_id(self):
+        return id(self)

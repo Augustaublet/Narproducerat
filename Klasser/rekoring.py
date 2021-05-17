@@ -48,5 +48,7 @@ class RekoRing:
         '''
         self.__joined_producers.remove(producer)
 
+    def get_id(self):
+        return id(self)
 
     

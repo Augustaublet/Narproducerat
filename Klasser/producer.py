@@ -47,7 +47,8 @@ class Producer:
         '''
         self.__inventory.remove(product)
     
-
+    def get_id(self):
+        return id(self)
 
 
 
