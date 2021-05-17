@@ -9,20 +9,33 @@ Hantera produkt
 </br>
 
 {% for product in products%}
+{% if product.get_producer() == user%}
 <div class="card" style="width: 35rem;">
     <div class="card-body">
       <h5 class="card-title">{{product.get_name()}}</h5>
       <h6 class="card-subtitle mb-2 text-muted">{{product.get_producer()}}</h6>
       <p class="card-text">{{product.get_description()}}</p>
-      <p class="card-text">Pris:{{product.get_price()}}kr</p>
+      <p class="card-text">Pris: {{product.get_price()}} kr
+        </br>
+        Saldo: {{product.get_quantity()}} st
+      </p>
+      
       
       <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="for_sale" >
+        {%if product.get_is_for_sale()%}
+        <input class="form-check-input" type="checkbox" id="for_sale" checked >
         <label class="form-check-label" for="flexSwitchCheckDefault">Produkt finns tillgänglig</label>
       </div>
-      <a class="btn btn-outline-success me-md-1"  href="#" class="card-link" disabled>Uppdatera</a>
+      {%else%}
+      <input class="form-check-input" type="checkbox" id="for_sale" >
+        <label class="form-check-label" for="flexSwitchCheckDefault">Produkt finns tillgänglig</label>
+      </div>
+      {%endif%}
+      <a class="btn btn-outline-success me-md-1"  href="#" class="card-link" disabled>Hantera</a>
     </div>
   </div>
+{%endif%}
 {%endfor%}
+<a class="btn btn-outline-success me-md-1" href="#">Uppdatera</a>
 
 {% endblock %}

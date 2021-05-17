@@ -38,8 +38,8 @@ class Product:
         return self.__description
 
     #tar Boolean för om produkten är tillgänglig
-    def set_for_sale(self, state):
+    def set_is_for_sale(self, state):
         self.__for_sale = state
 
-    def get_for_sale(self):
+    def get_is_for_sale(self):
         return self.__for_sale
