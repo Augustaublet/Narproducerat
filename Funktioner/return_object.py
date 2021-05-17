@@ -13,9 +13,18 @@ object_list.append(rekoringar)
 object_list.append(användare)
 object_list.append(producenter)
 
-def return_object(id):
+def get_object(id):
     for list in object_list:
         for object in list:
             if int(object.get_id()) == int(id):
                 return object
 
+def get_price_consumer(consumer_id, level_id):
+    for object in användare:
+        if int(object.get_id()) == int(consumer_id):
+            pass
+
+def get_price_producer(producer_id, consumer_id, rekoring_id):    
+    for object in producenter:
+        if int(object.get_id()) == int(producer_id):
+            pass

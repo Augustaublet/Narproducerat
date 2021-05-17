@@ -6,25 +6,38 @@ Varukorg
 
 {% block content %}
 <h1>Varukorg</h1>
-<div class="d-grid gap-2">
-    <a class="btn btn-outline-success" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        {{namn}}
-    </a>
-</div>
+<form method="Post">
+    <input class="form-control" list="datalistOptions" id="set_ring" name="set_ring" placeholder={{current_ring}}>
+    <datalist id="datalistOptions">
+    {% for ring in ringar %}
+      <option value={{ring.get_name()}}>
+        {% endfor %}
+    </datalist><button type="submit" class="btn btn-outline-success me-md-1">Välj</button>
+    
+ </form>
+ <form method="Post">
+{% for producer in producers%}
 <br/>
-<div class="collapse" id="collapseExample">
-    {% for product in products%}
-        <div class="card" style="width: 35rem;">
-            <div class="card-body">
-            <h5 class="card-title">{{product.get_name()}}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{product.get_producer()}}</h6>
-            <p class="card-text">{{product.get_description()}}</p>
-            <p class="card-text">Pris:{{product.get_price()}}kr</p>
-            
-            <a type="button" class="btn-close" aria-label="Close"></a>
-            </div>
-        </div>
-    {%endfor%}
-</div>
+    <div class="d-grid gap-2">
+        <label class="btn btn-outline-success">
+            {{producer.get_name()}}
+        </a>
+    </div>
+    <br/>
+        {% for product in products%}
+            {% if producer.get_name() == product.get_producer() %}
+                <div class="card" style="width: 35rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{product.get_name()}}</h5>
+                    <h6 class="card-text">{{product.get_description()}}</h6>
+                    <p class="card-text">Saldo: {{product.get_quantity()}}</p>
+                    <p class="card-text">Pris: {{product.get_price()}}kr</p>
+                    <button class="btn btn-outline-success me-md-1" type="submit", value="{{product.get_id()}}" name="add_cart">Handla</button>
+                    </div>
+                </div>
+            {% endif %}
+        {%endfor%}
+{%endfor%}
+</form>
 
 {% endblock %}
