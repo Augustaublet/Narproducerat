@@ -4,7 +4,7 @@ from testobjekt import produkter, rekoringar, användare, producenter
 import json
 
 app = Flask(__name__)
-app.secret_key="tesfaafefaca"
+app.secret_key= "dettaarentestnyckesomborandras"
 current_user = None
 
 @app.route("/", methods=["GET", "POST"])
