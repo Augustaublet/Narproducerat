@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, flash, redirect, session
 from Klasser.product import Product
 from testobjekt import produkter, rekoringar, användare, producenter
+from Funktioner.return_object import return_object
 import json
 
 app = Flask(__name__)
@@ -70,7 +71,8 @@ def update_product():
 def consumer_shopping():
     if request.method == "POST":
         add_cart = request.form.get("add_cart")
-        print(add_cart)
+        object = return_object(add_cart)
+        print(object.get_name())
     if request.form.get("set_ring"):
         session["current_ring"] = request.form.get("set_ring")
         return redirect(url_for("consumer_shopping"))
