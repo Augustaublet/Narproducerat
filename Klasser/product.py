@@ -43,3 +43,6 @@ class Product:
 
     def get_is_for_sale(self):
         return self.__for_sale
+
+    def get_id(self):
+        return id(self)

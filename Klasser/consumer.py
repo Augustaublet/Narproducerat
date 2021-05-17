@@ -17,3 +17,5 @@ class Consumer(ShoppingCart):
     def set_email(self, email):
         self.__email = email
 
+    def get_id(self):
+        return id(self)

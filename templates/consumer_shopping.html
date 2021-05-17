@@ -16,17 +16,15 @@ Handla
     </datalist><button type="submit" class="btn btn-outline-success me-md-1">Välj</button>
     
  </form>
- <form method="post" id="add_cart_form">
+ <form method="Post">
 {% for producer in producers%}
 <br/>
     <div class="d-grid gap-2">
-        <a class="btn btn-outline-success" data-bs-toggle="collapse" href={{"#"+producer.get_name()}} role="button" aria-expanded="false">
+        <label class="btn btn-outline-success">
             {{producer.get_name()}}
         </a>
     </div>
     <br/>
- 
-    <div class="collapse" id={{producer.get_name()}}>
         {% for product in products%}
             {% if producer.get_name() == product.get_producer() %}
                 <div class="card" style="width: 35rem;">
@@ -35,29 +33,11 @@ Handla
                     <h6 class="card-text">{{product.get_description()}}</h6>
                     <p class="card-text">Saldo: {{product.get_quantity()}}</p>
                     <p class="card-text">Pris: {{product.get_price()}}kr</p>
-                    <button type="submit" class="btn btn-outline-success me-md-1" value="test" name="add_cart" id="add_cart">Handla</button>
+                    <button class="btn btn-outline-success me-md-1" type="submit", value="{{product.get_id()}}" name="add_cart">Handla</button>
                     </div>
                 </div>
             {% endif %}
         {%endfor%}
-    </div>
 {%endfor%}
 </form>
-<script src="https://code.jquery.com/jquery-3.5.1.js" 
-          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
-          crossorigin="anonymous"></script>
-<script type="text/javascript">
-    $(document).on('submit','#add_cart_form',function(e)
-                   {
-      console.log('hello');
-      e.preventDefault();
-      $.ajax({
-        type:'POST',
-        url:'/handla',
-        data:{
-          todo:$("#todo").val()
-        },
-      })
-    });
-  </script>
 {% endblock %}

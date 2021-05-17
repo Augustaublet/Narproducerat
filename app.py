@@ -71,18 +71,10 @@ def consumer_shopping():
     if request.method == "POST":
         add_cart = request.form.get("add_cart")
         print(add_cart)
-        print(id(produkter[0].get_name()))
-        if request.form.get("set_ring"):
-            session["current_ring"] = request.form.get("set_ring")
-            return redirect(url_for("consumer_shopping"))
+    if request.form.get("set_ring"):
+        session["current_ring"] = request.form.get("set_ring")
+        return redirect(url_for("consumer_shopping"))
     return render_template("consumer_shopping.html", products=produkter, producers=producenter, ringar=rekoringar, current_ring=session["current_ring"])
-
-@app.route("/buy-product", methods=["POST"])
-def buy_product():
-    productjson = json.loads(request.data)
-    product_info = productjson["test"]
-    print(product_info)
-    print("hej")
 
 @app.route("/varukorg", methods=["GET", "POST"])
 def shoppingCart():
