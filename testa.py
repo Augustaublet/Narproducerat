@@ -34,8 +34,8 @@ Mårten.add_one_product(lammfile)
 
 #köp 3 till gurkor, och 7 potatisar
 #Mårten.add_x_products(gurka, "6")
-#Mårten.add_x_products(potatis, "7")
-#Mårten.add_x_products(lammfile, "3")
+Mårten.add_x_products(potatis, "7")
+Mårten.add_x_products(lammfile, "3")
 print("")
 print("")
 
