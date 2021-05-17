@@ -43,11 +43,11 @@ def set_ring():
         return redirect(url_for("consumer_shopping"))
     return render_template("set_ring.html", ringar = rekoringar)
 
+
 # Sida för att visa vilka produkter man har, länkt till lägga till ny produkt, länk till uppdatera befintilig produkt
 @app.route("/manage_product", methods=["GET", "POST"])
-def manage_product():
-    
-    return render_template("manage_product.html", products=produkter, user=session["current_user"])
+def manage_product():    
+    return render_template("manage_product.html", products=produkter, user=get_object(session["current_user"]))
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
@@ -84,6 +84,10 @@ def consumer_shopping():
 @app.route("/varukorg", methods=["GET", "POST"])
 def shoppingCart():
     return render_template("shoppingCart.html", products=produkter)
+
+@app.route("/my_order")
+def my_order():
+    return render_template("my_order.html", user=session["current_user"])
 
 if __name__ == "__main__":
     app.run(debug=True)
