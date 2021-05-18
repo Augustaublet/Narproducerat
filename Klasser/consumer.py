@@ -23,14 +23,16 @@ class Consumer(ShoppingCart):
 
     def get_current_order(self):
         order = self.get_cart_list()
-        
         return order
     
     def add_to_history(self, current_order):
-        self.__order_history.append(current_order)
+        #Jag har vänt på lista för att få senaste köpet först /aa
+        self.__order_history.insert(0,current_order)
 
     def get_order_history(self):
-        return self.__order_history
-
+        if self.__order_history:
+            return self.__order_history
+        else:
+            return ["ingen order lagd"]
     def make_purchase(self):
         pass

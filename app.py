@@ -84,9 +84,12 @@ def shoppingCart():
     user = get_object(session["current_user"])
     return render_template("shoppingCart.html", user=user)
 
-@app.route("/my_order")
+@app.route("/my_order", methods=["GET","POST"])
 def my_order():
-    return render_template("my_order.html", user=session["current_user"])
+    if request.method == "POST":
+        pass
+    user=get_object(session["current_user"])
+    return render_template("my_order.html", user=user, orders=user.get_order_history())
 
 if __name__ == "__main__":
     app.run(debug=True)
