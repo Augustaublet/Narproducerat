@@ -91,6 +91,14 @@ class ShoppingCart:
                     tot += (products.get_price()*self.__cart_list[products])
             dict[producer] = tot
         return dict
+    
+    def sum_producer(self):
+        tot = 0
+        dict = self.sum_per_producer()
+        for producer in dict:
+            tot += dict[producer]
+        return tot
+
                     
     def get_id(self):
         return id(self)

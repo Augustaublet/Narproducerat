@@ -7,6 +7,8 @@ Varukorg
 {% block content %}
 <h1>Varukorg</h1>
 {% if user.get_producers()%}
+<form method="Post"></form>
+<h3>Totalt {{ user.sum_producer()}} kr</h3>
   {% set cart = user.get_cart_list() %}
   {% for producer in user.get_producers()%}
   {% set sum_prod = user.sum_per_producer()%}
@@ -32,6 +34,8 @@ Varukorg
               {% endif %}
           {%endfor%}
   {%endfor%}
+  <button class="btn btn-outline-success me-md-1" type="submit", value="test" name="add_cart">Genomför köp</button>
+</form>
 {% else %} 
 <h2>Varukorgen är tom. Gå till handla för att lägga till produkter</h2>
 {% endif %}
