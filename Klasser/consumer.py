@@ -1,4 +1,5 @@
 from Klasser.shopping_cart import ShoppingCart # type: ignore
+import time
 class Consumer(ShoppingCart):
     def __init__(self, name, email):
         super().__init__()
@@ -28,15 +29,15 @@ class Consumer(ShoppingCart):
     
     def add_to_history(self, current_order):
         #Jag har vänt på lista för att få senaste köpet först /aa
-        self.__order_history.insert(0,current_order)
+        self.__order_history.insert(0,[current_order,time.ctime()])
 
     def get_order_history(self):
         if self.__order_history:
             return self.__order_history
         else:
-            return ["ingen order lagd"]
+            return ["Ingen order lagd"]
     def make_purchase(self):
-        self.add_to_history(self.__cart_list)
+        self.add_to_history(self.get_cart_list())
         self.empty_cart()
 
     def get_user_type(self):

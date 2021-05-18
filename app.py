@@ -3,6 +3,7 @@ from Klasser.product import Product
 from testobjekt import produkter, rekoringar, användare, producenter
 from Funktioner.return_object import get_object
 import json
+import time
 
 app = Flask(__name__)
 app.secret_key= "dettaarentestnyckesomborandras"
@@ -85,14 +86,22 @@ def consumer_shopping() :
 
 @app.route("/varukorg", methods=["GET", "POST"])
 def shoppingCart():
-    return render_template("shoppingCart.html", user=get_object(session["current_user"]))
+    user = get_object(session["current_user"])
+    if request.method == "POST":
+        if request.form.get("buy_cart"):
+            user.make_purchase()
+    return render_template("shoppingCart.html", user=user)
 
 @app.route("/my_order", methods=["GET","POST"])
 def my_order():
     if request.method == "POST":
         pass
     user=get_object(session["current_user"])
-    return render_template("my_order.html", user=user, orders=user.get_order_history())
+    return render_template("my_order.html", user=user)
+
+@app.route("/beställningar")
+def incoming_orders():
+    return render_template("incoming_orders.html",user=session["current_user"], consumers = användare)
 
 if __name__ == "__main__":
     app.run(debug=True)

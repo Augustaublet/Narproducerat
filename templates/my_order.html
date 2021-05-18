@@ -8,7 +8,7 @@
     <label for="chouse_order">Välj order</label>
     <select class="form-control" id="chouse_order">
         {% for order in user.get_order_history()%}
-        <option value=order>{{order}}</option>
+        <option value=order>{{order[1]}}</option>
         {%endfor%}
     </select>
         <button type="submit" class="btn btn-outline-success me-md-1">Välj</button> 

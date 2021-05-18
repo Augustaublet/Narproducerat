@@ -38,9 +38,11 @@
                   <a class="nav-item nav-link" href="{{ url_for('consumer_shopping') }}">Handla</a>
                   <a class="nav-item nav-link" href="{{ url_for('shoppingCart') }}">Varukorg</a>
                   <a class="nav-item nav-link" href="{{ url_for('set_ring') }}">Välja Ring</a>
+                  <a class="nav-item nav-link" href="{{ url_for('my_order') }}">Mina ordrar</a>
                   {% elif user.get_user_type() == "producer" %} 
                   <a class="nav-item nav-link" href="{{ url_for('add_product') }}">Lägg till produkt</a>
                   <a class="nav-item nav-link" href="{{ url_for('manage_product') }}">Hantera produkt</a>
+                  <a class="nav-item nav-link" href="{{ url_for('incoming_orders') }}">Beställningar</a>
                 {% endif %} 
               {% endif %} 
             {% endif %} 
