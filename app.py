@@ -68,16 +68,19 @@ def update_product():
     return render_template("update_product.html", user=get_object(session["current_user"]))
 
 @app.route("/handla", methods=["GET", "POST"])
-def consumer_shopping():
+def consumer_shopping() :
+    current_ring=session["current_ring"]     
     if request.method == "POST":
-        add_cart = request.form.get("add_cart")
-        product = get_object(add_cart)
-        user = get_object(session["current_user"])
-        user.add_one_product(product)
-    if request.form.get("set_ring"):
-        session["current_ring"] = request.form.get("set_ring")
-        return redirect(url_for("consumer_shopping"))
-    return render_template("consumer_shopping.html", products=produkter, producers=producenter, ringar=rekoringar, current_ring=session["current_ring"], user=get_object(session["current_user"]))
+        if request.form.get("add_cart"):
+            add_cart = request.form.get("add_cart")
+            product = get_object(add_cart)
+            user = get_object(session["current_user"])
+            user.add_one_product(product)
+        if request.form.get("set_ring"):
+            session["current_ring"] = request.form.get("set_ring")
+            current_ring= session["current_ring"]
+            return redirect(url_for("consumer_shopping"))
+    return render_template("consumer_shopping.html", products=produkter, producers=producenter, ringar=rekoringar, current_ring=current_ring, user=get_object(session["current_user"]))
 
 @app.route("/varukorg", methods=["GET", "POST"])
 def shoppingCart():
