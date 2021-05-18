@@ -6,27 +6,34 @@ Varukorg
 
 {% block content %}
 <h1>Varukorg</h1>
-<form method="Post">
-    <input class="form-control" list="datalistOptions" id="set_ring" name="set_ring" placeholder={{current_ring}}>
-    <datalist id="datalistOptions">
-    {% for ring in ringar %}
-      <option value={{ring.get_name()}}>
-        {% endfor %}
-    </datalist><button type="submit" class="btn btn-outline-success me-md-1">Välj</button>
-    
- </form>
- <form method="Post">
-{% for producer in user.get_producers()%}
-{{producer}}
-{%endfor%}
-
-{% set dict = user.get_cart_list() %}
-{% for products in dict %}
-{{products.get_name()}}
-{{dict[products]}}
-{%endfor%}
-
-
-</form>
+{% if user.get_producers()%}
+  {% set cart = user.get_cart_list() %}
+  {% for producer in user.get_producers()%}
+  {% set sum_prod = user.sum_per_producer()%}
+  <br/>
+      <div class="d-grid gap-2">
+          <label class="btn btn-outline-success">
+              {{producer}} Summa: {{sum_prod[producer]}} kr
+          </a>
+      </div>
+      <br/>
+          {% for product in cart %}
+              {% set tot_prod = product.get_price() * cart[product] %}
+              {% if producer == product.get_producer() %} 
+                <div class="card" style="width: 35rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{product.get_name()}}</h5>
+                    <h6 class="card-text">{{product.get_description()}}</h6>
+                    <p class="card-text">Antal: {{cart[product]}}</p>
+                    <p class="card-text">Pris: {{product.get_price()}}kr</p>
+                    <p class="card-text">Totalt: {{tot_prod}}kr</p>
+                    </div>
+                </div>
+              {% endif %}
+          {%endfor%}
+  {%endfor%}
+{% else %} 
+<h2>Varukorgen är tom. Gå till handla för att lägga till produkter</h2>
+{% endif %}
 
 {% endblock %}

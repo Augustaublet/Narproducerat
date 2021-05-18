@@ -51,16 +51,17 @@ def manage_product():
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
+    user=get_object(session["current_user"])
     if request.method == "POST":
         namn = request.form.get("productName")
         pris = request.form.get("productPrice")
         description = request.form.get("productDescription")
         isForSale = request.form.get("isForSale")
-        ny_produkt = Product(namn, pris,"Producent", description, isForSale)
+        ny_produkt = Product(namn, pris, user.get_name(), description, isForSale)
         produkter.append(ny_produkt)
         return redirect(url_for("manage_product"))
 
-    return render_template("add_product.html", producers = producenter, user=get_object(session["current_user"]))
+    return render_template("add_product.html", producers = producenter, user=user)
 
 #denna sida skall ta info från vald produkt och visa för justering
 @app.route("/update-product", methods=["GET", "POST"])

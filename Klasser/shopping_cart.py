@@ -1,3 +1,6 @@
+from Klasser.product import Product
+
+
 class ShoppingCart:
 
     def __init__(self):
@@ -38,7 +41,7 @@ class ShoppingCart:
         if product.get_quantity() == None:
             print("Den här produkten har inget saldo.")
             return
-        if product.get_quantity() - int(1) > 0:
+        if product.get_quantity() - int(1) >= 0:
             if product not in self.__cart_list:
                 product.set_quantity(product.get_quantity() - int(1))
                 self.__cart_list[product] = int(1)
@@ -76,13 +79,19 @@ class ShoppingCart:
                 producers.append(product.get_producer())
         return producers
 
-    # def sum_per_producer(self):
-    #     '''
-    #     Returns a dictionary with the producers(key) and the sum of the cost of their products in the cart(value).
-    #     '''
-    #     dict = {}
-    #     for producer in self.get_producers():
-            
+    def sum_per_producer(self):
+        '''
+        Returns a dictionary with the producers(key) and the sum of the cost of their products in the cart(value).
+        '''
+        dict = {}
+        for producer in self.get_producers():
+            tot = 0
+            for products in self.get_cart_list():
+                if products.get_producer() == producer:
+                    tot += (products.get_price()*self.__cart_list[products])
+            dict[producer] = tot
+        return dict
+                    
     def get_id(self):
         return id(self)
 
