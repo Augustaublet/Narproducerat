@@ -36,7 +36,8 @@ class Consumer(ShoppingCart):
         else:
             return ["ingen order lagd"]
     def make_purchase(self):
-        pass
+        self.add_to_history(self.__cart_list)
+        self.empty_cart()
 
     def get_user_type(self):
         return self.__user_type

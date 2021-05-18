@@ -95,3 +95,5 @@ class ShoppingCart:
     def get_id(self):
         return id(self)
 
+    def empty_cart(self):
+        self.__cart_list = {}

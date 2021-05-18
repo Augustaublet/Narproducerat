@@ -1,4 +1,6 @@
-class Producer:
+from Klasser.shopping_cart import ShoppingCart # type: ignore
+
+class Producer(ShoppingCart):
 
     def __init__(self, name, email, description, presentation):
 
