@@ -5,6 +5,7 @@ class Consumer(ShoppingCart):
         self.__name = name
         self.__email = email
         self.__order_history = []
+        self.__user_type = "consumer"
 
     def get_name(self):
         return self.__name
@@ -36,3 +37,6 @@ class Consumer(ShoppingCart):
             return ["ingen order lagd"]
     def make_purchase(self):
         pass
+
+    def get_user_type(self):
+        return self.__user_type

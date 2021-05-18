@@ -28,11 +28,11 @@ def index():
 
 @app.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
-    return render_template("sign_up.html")
+    return render_template("sign_up.html", user=get_object(session["current_user"]))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html")
+    return render_template("login.html", user=get_object(session["current_user"]))
 
 
 
@@ -41,7 +41,7 @@ def set_ring():
     if request.method == "POST":
         session["current_ring"] = request.form.get("set_ring")
         return redirect(url_for("consumer_shopping"))
-    return render_template("set_ring.html", ringar = rekoringar)
+    return render_template("set_ring.html", ringar = rekoringar, user=get_object(session["current_user"]))
 
 
 # Sida för att visa vilka produkter man har, länkt till lägga till ny produkt, länk till uppdatera befintilig produkt
@@ -60,12 +60,12 @@ def add_product():
         produkter.append(ny_produkt)
         return redirect(url_for("manage_product"))
 
-    return render_template("add_product.html", producers = producenter)
+    return render_template("add_product.html", producers = producenter, user=get_object(session["current_user"]))
 
 #denna sida skall ta info från vald produkt och visa för justering
 @app.route("/update-product", methods=["GET", "POST"])
 def update_product():
-    return render_template("update_product.html")
+    return render_template("update_product.html", user=get_object(session["current_user"]))
 
 @app.route("/handla", methods=["GET", "POST"])
 def consumer_shopping():
@@ -77,12 +77,11 @@ def consumer_shopping():
     if request.form.get("set_ring"):
         session["current_ring"] = request.form.get("set_ring")
         return redirect(url_for("consumer_shopping"))
-    return render_template("consumer_shopping.html", products=produkter, producers=producenter, ringar=rekoringar, current_ring=session["current_ring"])
+    return render_template("consumer_shopping.html", products=produkter, producers=producenter, ringar=rekoringar, current_ring=session["current_ring"], user=get_object(session["current_user"]))
 
 @app.route("/varukorg", methods=["GET", "POST"])
 def shoppingCart():
-    user = get_object(session["current_user"])
-    return render_template("shoppingCart.html", user=user)
+    return render_template("shoppingCart.html", user=get_object(session["current_user"]))
 
 @app.route("/my_order", methods=["GET","POST"])
 def my_order():

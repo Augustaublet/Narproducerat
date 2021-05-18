@@ -7,6 +7,7 @@ class Producer:
         self.__description = description
         self.__presentation = presentation
         self.__inventory = []
+        self.__user_type = "producer"
 
     def get_name(self):
         return self.__name
@@ -49,6 +50,9 @@ class Producer:
     
     def get_id(self):
         return id(self)
+    
+    def get_user_type(self):
+        return self.__user_type
 
 
 
