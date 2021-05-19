@@ -6,23 +6,35 @@ Inkommande beställningar
 
 {%block content%}
 
+{%for consumer in orders%}
 
-{%for consumer in orders %}
-{% set consumer_orders = consumer.get_order_history() %}
-{% set last_order = consumer_orders[0] %}
 <div class="d-grid gap-2">
-    <label class="btn btn-outline-success">
+    <label class="btn btn-success">
         {{consumer.get_name()}}
-    </label>
-    {% for product in last_order%}
-    <div class="card" style="width: 35rem;">
-        <div class="card-body">
-            
-        
-        </div>
-    </div>
-    {%endfor%}
+    </a>
 </div>
+<br/>
+    {% for order in orders[consumer] %}
+        {%for x in order%}
+            {%for producer in order[x] %}
+                {%if producer.get_name() == user.get_name()%}
+                        {%for product in order[x][producer]%}
+
+                    <div class="card" style="width: 35rem;">
+                        <div class="card-body">
+                        <h5 class="card-title">{{product.get_name()}}</h5>
+                        <h6 class="card-text">{{product.get_description()}}</h6>
+                        <p class="card-text">Antal: {{order[x][producer][product]}} </p>
+                        <p class="card-text">Pris: {{product.get_price()}}kr</p>
+                        <p class="card-text">Totalt:{{product.get_price()*order[x][producer][product]}} kr</p>
+                        </div>
+                    </div>
+                    {%endfor%}
+                {%endif%}
+            {%endfor%}
+        {%endfor%}
+      {%endfor%}
 {%endfor%}
+
 
 {% endblock%}

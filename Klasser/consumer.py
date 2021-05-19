@@ -33,6 +33,12 @@ class Consumer(ShoppingCart):
     def add_to_history(self, current_order):
         self.__order_history.insert(0,[current_order])
 
+    def get_last_order(self):
+        if self.__order_history:
+            return self.__order_history[0]
+        else:
+            return
+            
     def get_order_history(self):
         if self.__order_history:
             return self.__order_history
@@ -52,13 +58,6 @@ class Consumer(ShoppingCart):
             producer_dict[producer] = product_cart
         new_dict[time_now] = producer_dict
         
-
-        # for x in new_dict:
-        #     print(x)
-        #     for y in new_dict[x]:
-        #         print(y.get_name())
-        #         for j in new_dict[x][y]:
-        #             print(j.get_name(), new_dict[x][y][j])
                    
         self.add_to_history(new_dict)
         self.empty_cart()
