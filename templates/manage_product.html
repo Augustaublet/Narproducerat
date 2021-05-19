@@ -9,11 +9,10 @@ Hantera produkt
 </br>
 
 {% for product in products%}
-{% if product.get_producer() == user.get_name()%}
+{% if product.get_producer() == user%}
 <div class="card" style="width: 35rem;">
     <div class="card-body">
       <h5 class="card-title">{{product.get_name()}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{product.get_producer()}}</h6>
       <p class="card-text">{{product.get_description()}}</p>
       <p class="card-text">Pris: {{product.get_price()}} kr
         </br>

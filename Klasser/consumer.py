@@ -1,5 +1,8 @@
 from Klasser.shopping_cart import ShoppingCart # type: ignore
 import time
+# from testobjekt import produkter, rekoringar, användare, producenter
+
+
 class Consumer(ShoppingCart):
     def __init__(self, name, email):
         super().__init__()
@@ -28,8 +31,7 @@ class Consumer(ShoppingCart):
         return order
     
     def add_to_history(self, current_order):
-        #Jag har vänt på lista för att få senaste köpet först /aa
-        self.__order_history.insert(0,[current_order,time.ctime()])
+        self.__order_history.insert(0,[current_order])
 
     def get_order_history(self):
         if self.__order_history:
@@ -37,8 +39,30 @@ class Consumer(ShoppingCart):
         else:
             return ["Ingen order lagd"]
     def make_purchase(self):
-        self.add_to_history(self.get_cart_list())
+        new_dict = {}
+        time_now = time.ctime()
+        producers = self.get_producers()
+        cart = self.get_cart_list()
+        producer_dict = {}
+        for producer in producers:
+            product_cart = {}
+            for product in cart:
+                if product.get_producer() == producer:
+                    product_cart[product] = cart[product]
+            producer_dict[producer] = product_cart
+        new_dict[time_now] = producer_dict
+        
+
+        # for x in new_dict:
+        #     print(x)
+        #     for y in new_dict[x]:
+        #         print(y.get_name())
+        #         for j in new_dict[x][y]:
+        #             print(j.get_name(), new_dict[x][y][j])
+                   
+        self.add_to_history(new_dict)
         self.empty_cart()
 
     def get_user_type(self):
         return self.__user_type
+

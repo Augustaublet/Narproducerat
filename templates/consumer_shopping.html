@@ -26,7 +26,7 @@ Handla
     </div>
     <br/>
         {% for product in products%}
-            {% if producer.get_name() == product.get_producer() %}
+            {% if producer == product.get_producer() %}
                 <div class="card" style="width: 35rem;">
                     <div class="card-body">
                     <h5 class="card-title">{{product.get_name()}}</h5>
