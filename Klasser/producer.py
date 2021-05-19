@@ -56,7 +56,17 @@ class Producer(ShoppingCart):
     def get_user_type(self):
         return self.__user_type
 
-
-
+    def get_last_orders(self,consumers):
+        '''
+        Returns the a dict with the consumer how ordered ass key and the 
+        last order conectet to that consumer.
+        '''
+        current_order = {}
+        for consumer in consumers:
+            orders = consumer.get_order_history()
+            if orders[0] == "Ingen order lagd":
+                continue
+            current_order[consumer]=orders[0]
+        return current_order
 
 

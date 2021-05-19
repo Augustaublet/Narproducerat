@@ -28,15 +28,7 @@ produkter = []
 
 event = []
 
-a = Producer("Håkans potatisar", "hakan@potatis.se", "Håkan odlar potatisar","")
-producenter.append(a)
-a = Producer("Nettans kakor", "nettan@kakor.se", "Nettan bakar med kärlek","")
-producenter.append(a)
 
-b = Consumer("Bo Jansson", "bo.jansson@telia.se")
-användare.append(b)
-b = Consumer("Rita Karlsson", "rita.karlsson56@gmail.com")
-användare.append(b)
 
 c = Product("Potatisar", 9, "Håkans potatisar", "1 kg")
 c.set_quantity(10)
@@ -78,3 +70,20 @@ e = Event("13/5", rekoringar[1])
 event.append(e)
 e = Event("20/5", rekoringar[2])
 event.append(e)
+
+
+a = Producer("Håkans potatisar", "hakan@potatis.se", "Håkan odlar potatisar","")
+producenter.append(a)
+a = Producer("Nettans kakor", "nettan@kakor.se", "Nettan bakar med kärlek","")
+producenter.append(a)
+
+b = Consumer("Bo Jansson", "bo.jansson@exempel.se")
+användare.append(b)
+b.add_x_products(produkter[0],3)
+b.add_x_products(produkter[5],2)
+b.make_purchase()
+
+b = Consumer("Rita Karlsson", "rita.karlsson56@.com")
+användare.append(b)
+b.add_x_products(produkter[0],3)
+b.make_purchase()

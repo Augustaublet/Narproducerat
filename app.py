@@ -101,7 +101,8 @@ def my_order():
 
 @app.route("/beställningar")
 def incoming_orders():
-    return render_template("incoming_orders.html",user=session["current_user"], consumers = användare)
+    user=get_object(session["current_user"])
+    return render_template("incoming_orders.html", user=user, orders=user.get_last_orders(användare))
 
 if __name__ == "__main__":
     app.run(debug=True)

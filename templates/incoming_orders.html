@@ -6,14 +6,23 @@ Inkommande beställningar
 
 {%block content%}
 
-{%for consumer in consumers %}
 
+{%for consumer in orders %}
+{% set consumer_orders = consumer.get_order_history() %}
+{% set last_order = consumer_orders[0] %}
 <div class="d-grid gap-2">
     <label class="btn btn-outline-success">
         {{consumer.get_name()}}
     </label>
-
+    {% for product in last_order%}
+    <div class="card" style="width: 35rem;">
+        <div class="card-body">
+            
+        
+        </div>
+    </div>
+    {%endfor%}
 </div>
-
+{%endfor%}
 
 {% endblock%}
