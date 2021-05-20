@@ -57,8 +57,11 @@ def add_product():
         namn = request.form.get("productName")
         pris = request.form.get("productPrice")
         description = request.form.get("productDescription")
+        saldo = request.form.get("productInventory")
         isForSale = request.form.get("isForSale")
-        ny_produkt = Product(namn, pris, user.get_name(), description, isForSale)
+        ny_produkt = Product(namn, pris, user, description, isForSale)
+        if saldo:
+            ny_produkt.set_quantity(saldo)
         produkter.append(ny_produkt)
         return redirect(url_for("manage_product"))
 

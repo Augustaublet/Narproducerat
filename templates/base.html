@@ -32,8 +32,8 @@
             <a class="nav-item nav-link" href="{{ url_for('index') }}">Hem</a>
             {% if user %} 
               {% if user.get_user_type() == "producer" or user.get_user_type() == "consumer" %} 
-                <a class="nav-item nav-link" href="{{ url_for('sign_up') }}">Skapa konto</a>
-                <a class="nav-item nav-link" href="{{ url_for('login') }}">Logga in</a>
+                <!--<a class="nav-item nav-link" href="{{ url_for('sign_up') }}">Skapa konto</a>
+                <a class="nav-item nav-link" href="{{ url_for('login') }}">Logga in</a>                       Kommenterat bort för prototyp // GE-->
                   {% if user.get_user_type() == "consumer" %}
                   {% if current_ring %} 
                   <a class="nav-item nav-link" href="{{ url_for('consumer_shopping') }}">Handla</a>
@@ -42,8 +42,8 @@
                   <a class="nav-item nav-link" href="{{ url_for('set_ring') }}">Välja Ring</a>
                   <a class="nav-item nav-link" href="{{ url_for('my_order') }}">Mina ordrar</a>
                   {% elif user.get_user_type() == "producer" %} 
-                  <a class="nav-item nav-link" href="{{ url_for('add_product') }}">Lägg till produkt</a>
-                  <a class="nav-item nav-link" href="{{ url_for('manage_product') }}">Hantera produkt</a>
+                  <!--<a class="nav-item nav-link" href="{{ url_for('add_product') }}">Lägg till produkt</a>  Kommenterat bort för prototyp // GE-->
+                  <a class="nav-item nav-link" href="{{ url_for('manage_product') }}">Hantera produkter</a>
                   <a class="nav-item nav-link" href="{{ url_for('incoming_orders') }}">Beställningar</a>
                 {% endif %} 
               {% endif %} 

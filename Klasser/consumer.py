@@ -44,6 +44,7 @@ class Consumer(ShoppingCart):
             return self.__order_history
         else:
             return ["Ingen order lagd"]
+            
     def make_purchase(self):
         new_dict = {}
         time_now = time.ctime()
