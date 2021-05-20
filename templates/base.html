@@ -34,8 +34,10 @@
               {% if user.get_user_type() == "producer" or user.get_user_type() == "consumer" %} 
                 <a class="nav-item nav-link" href="{{ url_for('sign_up') }}">Skapa konto</a>
                 <a class="nav-item nav-link" href="{{ url_for('login') }}">Logga in</a>
-                  {% if user.get_user_type() == "consumer" %} 
+                  {% if user.get_user_type() == "consumer" %}
+                  {% if current_ring %} 
                   <a class="nav-item nav-link" href="{{ url_for('consumer_shopping') }}">Handla</a>
+                  {% endif %}
                   <a class="nav-item nav-link" href="{{ url_for('shoppingCart') }}">Varukorg</a>
                   <a class="nav-item nav-link" href="{{ url_for('set_ring') }}">Välja Ring</a>
                   <a class="nav-item nav-link" href="{{ url_for('my_order') }}">Mina ordrar</a>

@@ -90,14 +90,14 @@ def shoppingCart():
     if request.method == "POST":
         if request.form.get("buy_cart"):
             user.make_purchase()
-    return render_template("shoppingCart.html", user=user)
+    return render_template("shoppingCart.html", current_ring=session["current_ring"], user=user)
 
 @app.route("/my_order", methods=["GET","POST"])
 def my_order():
     if request.method == "POST":
         pass
     user=get_object(session["current_user"])
-    return render_template("my_order.html", user=user)
+    return render_template("my_order.html", current_ring=session["current_ring"], user=user)
 
 @app.route("/beställningar")
 def incoming_orders():
