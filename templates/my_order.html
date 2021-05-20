@@ -3,7 +3,31 @@
 
 {% block content %}
 <h1>Ordrar</h1>
-<form method="POST">
+{% set order_history = user.get_order_history() %}
+    {% for orders in order_history%}
+        {% for order in orders %}
+            {% for time in order %}
+                <h3><br/>{{time}}<br/></h3>
+                {% for producer in order[time]%}
+                    <div class="d-grid gap-2"><label class="btn btn-success">{{producer.get_name()}}<br/></label></div>
+                        {%for product in order[time][producer]%}
+                        {% set antal = order[time][producer][product]%}
+                        <div class="card" style="width: 35rem;">
+                            <div class="card-body">
+                            <h5 class="card-title">{{product.get_name()}}</h5>
+                            <h6 class="card-text">{{product.get_description()}}</h6>
+                            <p class="card-text">Antal: {{antal}}</p>
+                            <p class="card-text">Pris: {{product.get_price()}}kr</p>
+                            <p class="card-text">Totalt: {{product.get_price()*antal}}kr</p>
+                            </div>
+                        </div>
+                        {%endfor%}
+                {%endfor%}
+            {%endfor%}
+        {%endfor%}
+    {%endfor%}
+
+<!-- <form method="POST">
   <div class="form-group">
     <label for="chouse_order">Välj order</label>
     <select class="form-control" id="chouse_order">
@@ -11,13 +35,13 @@
         {% for orders in order_history%}
         {% for order in orders %}
         {% for time in order %}
-        <option value=order>{{time}}</option>
+        <option>{{time}}</option>
         {%endfor%}
         {%endfor%}
         {%endfor%}
     </select>
-        <button type="submit" class="btn btn-outline-success me-md-1">Välj</button> 
+        <button type="submit" class="btn btn-outline-success me-md-1" name="test" value={{time}}>Välj</button> 
     </div>
-</form>
+</form> -->
 
 {% endblock %}

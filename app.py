@@ -97,7 +97,8 @@ def shoppingCart():
 @app.route("/my_order", methods=["GET","POST"])
 def my_order():
     if request.method == "POST":
-        pass
+        test= request.form.get("test")
+        print(test)
     user=get_object(session["current_user"])
     return render_template("my_order.html", current_ring=session["current_ring"], user=user)
 
