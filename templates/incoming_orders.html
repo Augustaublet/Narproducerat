@@ -7,17 +7,16 @@ Inkommande beställningar
 {%block content%}
 
 {%for consumer in orders%}
-
-<div class="d-grid gap-2">
-    <label class="btn btn-success">
-        {{consumer.get_name()}}
-    </a>
-</div>
-<br/>
     {% for order in orders[consumer] %}
         {%for x in order%}
             {%for producer in order[x] %}
                 {%if producer.get_name() == user.get_name()%}
+                    <div class="d-grid gap-2">
+                        <label class="btn btn-success">
+                            {{consumer.get_name()}}
+                        </label>
+                    </div>
+                    <br/>
                         {%for product in order[x][producer]%}
 
                     <div class="card" style="width: 35rem;">
