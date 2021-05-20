@@ -91,6 +91,7 @@ def shoppingCart():
         if request.form.get("buy_cart"):
             user.make_purchase()
     return render_template("shoppingCart.html", current_ring=session["current_ring"], user=user)
+            flash('Tack för din beställning!', category='success')
 
 @app.route("/my_order", methods=["GET","POST"])
 def my_order():
