@@ -80,13 +80,16 @@ def consumer_shopping() :
             add_cart = request.form.get("add_cart")
             product = get_object(add_cart)
             user = get_object(session["current_user"])
-            if product.get_quantity() != None:
-                if product.get_quantity() > 0:
-                    user.add_one_product(product)
-                else:
-                    flash('Produkten är slutsåld.', category='error')
+            if user is None:
+                flash('Du har inte valt en användare. Gå tillbaka till "Hem".', category='error')
             else:
-                    flash('Produkten har inget saldo. Kontakta producenten för mer information.', category='error')
+                if product.get_quantity() != None:
+                    if product.get_quantity() > 0:
+                        user.add_one_product(product)
+                    else:
+                        flash('Produkten är slutsåld.', category='error')
+                else:
+                        flash('Produkten har inget saldo. Kontakta producenten för mer information.', category='error')
             
         if request.form.get("set_ring"):
             session["current_ring"] = request.form.get("set_ring")
