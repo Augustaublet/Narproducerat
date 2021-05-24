@@ -23,10 +23,7 @@ class Product:
         self.__price = price
 
     def get_quantity(self):
-        if self.__quantity:
             return self.__quantity
-        else:
-            return "Den här produkten har inget saldo. Kontakta producenten för mer information."
 
     def set_quantity(self, quantity):
         self.__quantity = int(quantity)

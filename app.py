@@ -80,7 +80,14 @@ def consumer_shopping() :
             add_cart = request.form.get("add_cart")
             product = get_object(add_cart)
             user = get_object(session["current_user"])
-            user.add_one_product(product)
+            if product.get_quantity() != None:
+                if product.get_quantity() > 0:
+                    user.add_one_product(product)
+                else:
+                    flash('Produkten är slutsåld.', category='error')
+            else:
+                    flash('Produkten har inget saldo. Kontakta producenten för mer information.', category='error')
+            
         if request.form.get("set_ring"):
             session["current_ring"] = request.form.get("set_ring")
             current_ring= session["current_ring"]
@@ -118,4 +125,4 @@ def incoming_orders():
     return render_template("incoming_orders.html", user=user, orders=orders, consumer=användare)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
